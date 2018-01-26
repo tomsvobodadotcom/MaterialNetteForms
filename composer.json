@@ -1,0 +1,24 @@
+{
+    "name": "TS/materialNetteForms",
+    "version": "0.1.0",
+    "type": "library",
+    "description": "Rozšíření Nette Frameworku o material formuláře s použitím MaterializeCss frameworku",
+    "authors": [
+        {
+            "name": "Tom Svoboda",
+            "email": "tsvob94@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=7.0",
+        "nette/forms": "^2.4",
+        "nette/utils": "^2.4"
+    },
+    "require-dev": {
+        "nette/tester": "dev"
+    },
+    "autoload": {
+        "psr-4": { "TS\\MaterialNetteForms\\": "src/" }
+    }
+}
