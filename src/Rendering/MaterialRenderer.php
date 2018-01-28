@@ -47,7 +47,7 @@ class MaterialRenderer extends \Nette\Forms\Rendering\DefaultFormRenderer {
      * MaterialRenderer Constructor
      */
     public function __construct() {
-        parent::__construct();
+        //parent::__construct(); // Parrent has no constructor
         
         // merge material wrappers with defaultRenderer ones
         $this->wrappers = Arrays::mergeTree($this->wrappers, $this->materialWrappers);
