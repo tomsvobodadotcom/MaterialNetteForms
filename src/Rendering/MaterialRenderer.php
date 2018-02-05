@@ -89,8 +89,10 @@ class MaterialRenderer extends \Nette\Forms\Rendering\DefaultFormRenderer {
         } else if ($control instanceof Nette\Forms\Controls\Checkbox) {
             // Ošetření checkboxu - při třídě input-class nejde
 
-            $oldClasses = $pair->attrs['class'];
-            $pair->attrs['class'] = str_replace('input-field', 'input-field-checkbox', $oldClasses);
+            if(isset($pair->attrs['class'])) {
+                $oldClasses = $pair->attrs['class'];
+                $pair->attrs['class'] = str_replace('input-field', 'input-field-checkbox', $oldClasses);
+            }
 
             $p = Html::el('p');
 
