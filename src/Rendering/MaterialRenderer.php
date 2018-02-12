@@ -4,7 +4,6 @@ namespace TS\MaterialNetteForms\Rendering;
 
 use Nette;
 use Nette\Utils\Html;
-use Nette\Utils\Arrays;
 
 /**
  * Renderer pro renderování podle pravidel materializecss frameworku pro docílení kompatibility
@@ -16,31 +15,64 @@ class MaterialRenderer extends \Nette\Forms\Rendering\DefaultFormRenderer {
     /**
      * Material wrappers (MaterializeCss)
      * @var array
-     */
-    protected $materialWrappers = [
-        'controls' => [
-            'container' => 'div class="row"'
+     */    
+    public $wrappers = [
+        'form' => [
+            'container' => null,
         ],
-        
-        'pair' => [
-            'container' => 'div class="input-field col s12"',
-            '.error'    => 'invalid'
-        ],
-        
+
         'error' => [
             'container' => 'div class="row error"',
-            'item'      => 'div class="col s12 item"'
+            'item' => 'div class="col s12 item"',
         ],
-        
+
+        'group' => [
+            'container' => 'fieldset',
+            'label' => 'legend',
+            'description' => 'p',
+        ],
+
+        'controls' => [
+            'container' => 'div class="row"',
+        ],
+
+        'pair' => [
+            'container' => 'div class="input-field col s12"',
+            '.required' => 'required',
+            '.optional' => null,
+            '.odd' => null,
+            '.error' => 'invalid',
+        ],
+
         'control' => [
+            'container' => '',
+            '.odd' => null,
+
+            'description' => 'small',
+            'requiredsuffix' => '',
             'errorcontainer' => 'div class="row inline-error"',
-            'erroritem'      => 'div class="col s12 right-align"',
-            'container'      => ''
+            'erroritem' => 'div class="col s12 right-align"',
+
+            '.required' => 'required',
+            '.text' => 'text',
+            '.password' => 'text',
+            '.file' => 'text',
+            '.email' => 'text',
+            '.number' => 'text',
+            '.submit' => 'button',
+            '.image' => 'imagebutton',
+            '.button' => 'button',
         ],
-        
+
         'label' => [
-            'container' => ''
-        ]
+            'container' => '',
+            'suffix' => null,
+            'requiredsuffix' => '',
+        ],
+
+        'hidden' => [
+            'container' => null,
+        ],
     ];
 
     /**
@@ -48,9 +80,6 @@ class MaterialRenderer extends \Nette\Forms\Rendering\DefaultFormRenderer {
      */
     public function __construct() {
         //parent::__construct(); // Parrent has no constructor
-        
-        // merge material wrappers with defaultRenderer ones
-        $this->wrappers = Arrays::mergeTree($this->wrappers, $this->materialWrappers);
     }
     
     /**
