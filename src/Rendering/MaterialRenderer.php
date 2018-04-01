@@ -123,10 +123,17 @@ class MaterialRenderer extends \Nette\Forms\Rendering\DefaultFormRenderer {
                 $pair->attrs['class'] = str_replace('input-field', 'input-field-checkbox', $oldClasses);
             }
 
+            $origLabel   = $this->renderLabel($control);
+            $origControl = $this->renderControl($control);
+            
+            $span = Html::el('span', $origLabel->getText());
+            
+            $label = Html::el('label');
+            $label->addHtml($origControl);
+            $label->addHtml($span);
+            
             $p = Html::el('p');
-
-            $p->addHtml($this->renderControl($control));
-            $p->addHtml($this->renderLabel($control));
+            $p->addHtml($label);
 
             $pair->addHtml($p);
         } else {
