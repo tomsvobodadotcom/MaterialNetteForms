@@ -57,6 +57,16 @@ class MaterialForm extends \Nette\Application\UI\Form {
      }
      
      /**
+     * Adds icon-only button used to submit form.
+     * @param  string $name control name
+     * @param  string $icon Material icon name
+     * @return Controls\SubmitButton
+     */
+     public function addIconSubmit($name, $icon) {
+         return $this[$name] = new Control\CircleSubmitButton($icon);
+     }
+     
+     /**
       * Add DatePicker
       * @param type $name
       * @param type $caption
